@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{
+        scroll-behavior: auto;
+    }
+    
+}
+
+html{
+
+    scroll-behavior: smooth;
+}
+
+.gbBackground {
+    opacity: 0.5;
+    color: transparent;
+    font-size: 18vw;
+    position: absolute;
+    -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: black;
+   z-index: 1;
+ 
+  
+
+  }
+
+
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0.5;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInBg {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 0.1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0.2;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-slide-in-left {
+    animation: slideIn 5s forwards;
+  }
+
+  .animate-slide-in-left-Bg {
+    animation: slideInBg 3s forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInFromRight 3s forwards;
+  }
