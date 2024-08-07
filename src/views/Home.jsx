@@ -14,38 +14,37 @@ function Home() {
         <h2>GUILLERMINA BASCOY</h2>
       </div>
       <section
-        className="w-[340px] lg:w-[740px]  md:w-[440px] flex justify-center items-center z-30"
+        className=" lg:w-[740px]  md:w-[440px] flex justify-center items-center z-30 "
         id="top"
       >
+        
+
         <img
           src="/imagenF.png"
           alt="imagenPerfil"
-          className="lg:w-3/4 w-2/3 object-cover mt-20 animate-slide-in-left"
+          className="lg:w-3/4 w-full object-cover mt-20 animate-slide-in-left "
         />
+    
 
-        <div className=" absolute bottom-64 text-center md:static lg:static text-nowrap flex flex-col mt-28">
+        <div className=" absolute bottom-36 text-center md:static lg:static text-nowrap flex flex-col">
           <h2 className=" text-xs lg:text-3xl font-semibold text-stone-700 animate-slide-in-right ">
             ESTUDIANTE DE DISEÑO DE INDUMENTARIA
           </h2>
-          <h1 className=" text-6xl lg:text-9xl font-font text-lime-500 animate-slide-in-right ">
+          <h1 className=" text-[56px] lg:text-9xl font-font text-lime-500 animate-slide-in-right ">
             GUILLERMINA BASCOY
           </h1>
-          <p className="text-xs text-pretty animate-slide-in-right transform duration-3000 ">
+          <p className="text-xs px-5 text-pretty animate-slide-in-right transform duration-3000 ">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
             metus tellus. Etiam blandit aliquet lorem nec varius. Nulla
             tincidunt enim ac sem ornare bibendum. Mauris iaculis hendrerit
             varius. Maecenas suscipit tincidunt turpis, in porta justo eleifend
-            id. Donec placerat, nisl vel scelerisque iaculis, augue urna
-            sagittis arcu, id ultrices purus metus id nibh. Sed fringilla ante
-            euismod massa volutpat, ut molestie erat ultrices. Proin id erat
-            quam. Aenean non odio a ipsum mollis venenatis eget tincidunt dolor.
-            Nunc vel nunc rutrum, rutrum orci at, commodo nibh.
+            id.
           </p>
         </div>
       </section>
       <section
         id="portfolio"
-        className="w-[440px] lg:w-full md:w-[440px] flex justify-center flex-col items-center z-30 bg-stone-950"
+        className=" lg:w-full md:w-[440px] flex justify-center flex-col items-center z-30 bg-stone-950 mt-32"
       >
         <h2 className="animate-slide-in-left font-bold text-7xl text-lime-500 mt-16">
           PORTFOLIO
