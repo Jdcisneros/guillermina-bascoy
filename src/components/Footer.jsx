@@ -1,8 +1,9 @@
+import { FaInstagram, FaLinkedin, FaPinterestSquare } from "react-icons/fa";
+import { HiMail } from "react-icons/hi";
+import { AiFillTikTok } from "react-icons/ai";
 import { useEffect, useState } from "react";
-// import { CgMenuRightAlt } from "react-icons/cg";
-import Menu from "./Menu";
 
-function Nav() {
+function Footer() {
   const [activeItem, setActiveItem] = useState("top");
 
   useEffect(() => {
@@ -19,15 +20,44 @@ function Nav() {
 
   const handleItemClick = (item) => {
     setActiveItem(item);
-  }
+  };
 
   return (
-    <div className="fixed top-0 z-40 w-full bg-white shadow-lg">
-      <div className="flex justify-between items-center py-2 lg:w-[1400px] w-full mx-auto">
-        <h2 className="flex flex-row px-2 text-stone-900 text-3xl font-bold">
-          Guillermina Bascoy
-        </h2>
-        <nav className="hidden lg:flex flex-row px-2 text-stone-900 text-xl relative">
+    <div className="w-full m-8 bg-stone-100">
+      <div className="flex flex-row justify-center">
+        <a
+          href="#instagram"
+          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+        >
+          <FaInstagram size={30} />
+        </a>
+        <a
+          href="#linkedin"
+          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+        >
+          <FaLinkedin size={30} />
+        </a>
+        <a
+          href="#pinterest"
+          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+        >
+          <FaPinterestSquare size={30} />
+        </a>
+        <a
+          href="#mail"
+          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+        >
+          <HiMail size={32} />
+        </a>
+        <a
+          href="#tiktok"
+          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+        >
+          <AiFillTikTok size={30} />
+        </a>
+      </div>
+      <div className="flex justify-center items-center mt-5">
+        <nav className="justify-center item text-stone-900 text-xl">
           <a
             href="#top"
             className={`nav-item font-bold hover:text-lime-400 px-3 mx-1 transition ${
@@ -64,9 +94,12 @@ function Nav() {
           >
             SOBRE MÍ
           </a>
+
           <div
             className={`indicator absolute bottom-0 h-1 bg-lime-400 transition-all ${
-              activeItem === "top" ? "left-0" : activeItem === "portfolio"
+              activeItem === "top"
+                ? "left-0"
+                : activeItem === "portfolio"
                 ? "left-1/4"
                 : activeItem === "about-me"
                 ? "left-2/4"
@@ -74,13 +107,14 @@ function Nav() {
                 ? "left-3/4"
                 : "left-3/4"
             }`}
-          />
+          ></div>
         </nav>
-        {/* Botón de menú hamburguesa en dispositivos móviles */}
-        <Menu />
       </div>
+      <p className="text-center mt-10 -mb-10">
+        &copy;2024 Guillermina Bascoy | All Rights Reserved
+      </p>
     </div>
   );
 }
 
-export default Nav;
+export default Footer;

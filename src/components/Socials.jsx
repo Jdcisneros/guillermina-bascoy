@@ -4,7 +4,7 @@ import { AiFillTikTok } from "react-icons/ai";
 
 function Socials() {
   return (
-    <div className="fixed top-1/2 transform -translate-y-1/2 left-0 z-50">
+    <div className=" hidden lg:flex md:flex fixed top-1/2 transform -translate-y-1/2 left-0 z-50">
       <div className="flex flex-col items-center text-stone-900 text-xl bg-white/50 p-2 shadow-lg rounded">
         <a
           href="#instagram"

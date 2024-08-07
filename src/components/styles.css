@@ -1,41 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-    display: flex;
-    flex-direction: column;
-    
-}
-
-@media (prefers-reduced-motion: reduce){
-    html{
-        scroll-behavior: auto;
-    }
-    
-}
-
-html{
-
-    scroll-behavior: smooth;
-}
-
-.gbBackground {
-   
-    color: transparent;
-    font-size: 18vw;
-    position: absolute;
-    -webkit-text-stroke-width: 1.2px;
-  -webkit-text-stroke-color: black;
-   z-index: 1;
- 
-  
-
-  }
 
 
-
-  @keyframes slideIn {
+@keyframes slideIn {
     0% {
       opacity: 0.5;
       transform: translateX(-100%);
@@ -156,3 +121,6 @@ html{
     animation: slideIn 1s ease-out forwards;
     animation-delay: 0.8s;
   }
+
+
+ 
