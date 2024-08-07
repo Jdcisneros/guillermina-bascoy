@@ -76,7 +76,6 @@ function Nav() {
             }`}
           />
         </nav>
-        {/* Botón de menú hamburguesa en dispositivos móviles */}
         <Menu />
       </div>
     </div>
