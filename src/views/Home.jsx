@@ -40,10 +40,10 @@ function Home() {
           <h2 className="text-xs lg:text-3xl font-semibold text-stone-950 animate-slide-in-right">
             ESTUDIANTE DE DISEÑO DE INDUMENTARIA
           </h2>
-          <h1 className="text-6xl lg:text-9xl font-font text-lime-500 animate-slide-in-right">
+          <h1 className="text-5xl lg:text-9xl font-font text-lime-500 animate-slide-in-right">
             GUILLERMINA BASCOY
           </h1>
-          <p className="text-xs lg:text-base w-full max-w-[340px] text-pretty flex-wrap animate-slide-in-right overflow-hidden px-4">
+          <p className="text-xs h-[100px] lg:text-base w-full max-w-[340px] text-pretty animate-slide-in-right overflow-hidden px-4">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
         metus tellus. Etiam blandit aliquet lorem nec varius. Nulla
         tincidunt enim ac sem ornare bibendum. Mauris iaculis hendrerit
