@@ -36,7 +36,7 @@ function Home() {
           alt="imagenPerfil"
           className="lg:w-3/4 w-full object-cover mt-32 animate-slide-in-left"
         />
-        <div className="absolute bottom-5 text-center md:static lg:static text-nowrap flex justify-center flex-col items-center" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+        <div className="absolute bottom-5 text-center md:static lg:static lg:text-nowrap flex justify-center flex-col items-center" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
           <h2 className="text-xs lg:text-3xl font-semibold text-stone-950 animate-slide-in-right">
             ESTUDIANTE DE DISEÑO DE INDUMENTARIA
           </h2>
