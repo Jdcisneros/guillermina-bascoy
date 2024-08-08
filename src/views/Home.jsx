@@ -34,13 +34,13 @@ function Home() {
         <img
           src="/imagenF.png"
           alt="imagenPerfil"
-          className="lg:w-3/4 w-full object-cover mt-20 animate-slide-in-left"
+          className="lg:w-3/4 w-full object-cover mt-32 animate-slide-in-left"
         />
-        <div className="absolute bottom-36 text-center md:static lg:static text-nowrap flex justify-center flex-col items-center">
-          <h2 className="text-xs lg:text-3xl font-semibold text-stone-700 animate-slide-in-right">
+        <div className="absolute bottom-5 text-center md:static lg:static text-nowrap flex justify-center flex-col items-center" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+          <h2 className="text-xs lg:text-3xl font-semibold text-stone-950 animate-slide-in-right">
             ESTUDIANTE DE DISEÑO DE INDUMENTARIA
           </h2>
-          <h1 className="text-[56px] lg:text-9xl font-font text-lime-500 animate-slide-in-right">
+          <h1 className="text-6xl lg:text-9xl font-font text-lime-500 animate-slide-in-right">
             GUILLERMINA BASCOY
           </h1>
           <p className="text-xs lg:text-base w-full max-w-[340px] text-pretty flex-wrap animate-slide-in-right overflow-hidden px-4">

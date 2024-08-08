@@ -110,7 +110,7 @@ function Footer() {
           ></div>
         </nav>
       </div>
-      <p className="text-center mt-10 -mb-10">
+      <p className="text-center mt-10 -mb-10 p-5">
         &copy;2024 Guillermina Bascoy | All Rights Reserved
       </p>
     </div>
