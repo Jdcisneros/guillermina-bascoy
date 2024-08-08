@@ -28,7 +28,7 @@ function Home() {
         <h2>GUILLERMINA BASCOY</h2>
       </div>
       <section
-        className="w-[440px] lg:w-[740px] md:w-[440px] flex justify-center items-center z-30"
+        className=" lg:w-[740px] md:w-[440px] flex justify-center items-center z-30"
         id="top"
       >
         <img
@@ -43,7 +43,7 @@ function Home() {
           <h1 className="text-[56px] lg:text-9xl font-font text-lime-500 animate-slide-in-right">
             GUILLERMINA BASCOY
           </h1>
-          <p className="text-xs px-5 text-pretty animate-slide-in-right transform duration-3000">
+          <p className="text-xs  w-[440px] px-5 text-pretty animate-slide-in-right transform duration-3000">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
             metus tellus. Etiam blandit aliquet lorem nec varius. Nulla
             tincidunt enim ac sem ornare bibendum. Mauris iaculis hendrerit
