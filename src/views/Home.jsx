@@ -43,7 +43,7 @@ function Home() {
           <h1 className="text-5xl lg:text-9xl font-font text-lime-500 animate-slide-in-right">
             GUILLERMINA BASCOY
           </h1>
-          <p className="text-xs h-[100px] lg:text-base w-full max-w-[340px] text-pretty animate-slide-in-right overflow-hidden px-4">
+          <p className="text-pretty animate-slide-in-right transform duration-3000 w-[340px] lg:w-[740px] text-center  text-stone-950 mb-10">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
         metus tellus. Etiam blandit aliquet lorem nec varius. Nulla
         tincidunt enim ac sem ornare bibendum. Mauris iaculis hendrerit
