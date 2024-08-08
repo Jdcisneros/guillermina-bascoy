@@ -57,7 +57,7 @@ function Footer() {
         </a>
       </div>
       <div className="flex justify-center items-center mt-5">
-        <nav className="justify-center item text-stone-900 text-xl">
+        <nav className="justify-center item text-stone-900 lg:text-xl text-sm">
           <a
             href="#top"
             className={`nav-item font-bold hover:text-lime-400 px-3 mx-1 transition ${
