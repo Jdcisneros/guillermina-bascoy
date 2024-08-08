@@ -28,7 +28,7 @@ function Home() {
         <h2>GUILLERMINA BASCOY</h2>
       </div>
       <section
-        className="lg:w-[740px] md:w-[440px] flex justify-center items-center z-30"
+        className="w-[440px] lg:w-[740px] md:w-[440px] flex justify-center items-center z-30"
         id="top"
       >
         <img
