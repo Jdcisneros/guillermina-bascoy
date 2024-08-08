@@ -24,7 +24,7 @@ function Nav() {
   return (
     <div className="fixed top-0 z-40 w-full bg-white shadow-lg">
       <div className="flex justify-between items-center py-2 lg:w-[1400px] w-full mx-auto">
-        <h2 className="flex flex-row px-2 text-stone-900 text-3xl font-bold">
+        <h2 className="flex flex-row px-2 text-stone-900 text-xl lg:text-3xl font-bold">
           Guillermina Bascoy
         </h2>
         <nav className="hidden lg:flex flex-row px-2 text-stone-900 text-xl relative">
