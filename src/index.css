@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
     display: flex;
     flex-direction: column;
@@ -26,8 +27,12 @@ html{
     font-size: 18vw;
     position: absolute;
     -webkit-text-stroke-width: 1.2px;
-  -webkit-text-stroke-color: black;
-   z-index: 1;
+  -webkit-text-stroke-color: rgb(0, 0, 0,0.6);
+   z-index: 20;
+   position: fixed;
+   
+   overflow:hidden;
+  
  
   
 

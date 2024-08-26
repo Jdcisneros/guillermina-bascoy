@@ -1,29 +1,30 @@
 import { FaInstagram, FaLinkedin, FaPinterestSquare } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { AiFillTikTok } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
-  const [activeItem, setActiveItem] = useState("top");
+  
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setActiveItem(scrollTop > 0 ? "scrolled" : "top");
-    };
+ 
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const navigate = useNavigate();
 
-  const handleItemClick = (item) => {
-    setActiveItem(item);
+  const handleNavigate = (path, sectionId) => {
+    navigate(path);
+    setTimeout(() => {
+      if (sectionId) {
+        const element = document.querySelector(`#${sectionId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 100); // Ajusta el tiempo si es necesario
   };
 
+
   return (
-    <div className="w-full m-8 bg-stone-100">
+    <div className="relative w-full mt-10 z-50">
       <div className="flex flex-row justify-center">
         <a
           href="#instagram"
@@ -57,57 +58,31 @@ function Footer() {
         </a>
       </div>
       <div className="flex justify-center items-center mt-5">
-        <nav className="justify-center item text-stone-900 lg:text-xl text-sm">
+      <nav className="justify-center items-center text-stone-900 lg:text-xl text-sm">
           <a
-            href="#top"
-            className={`nav-item font-bold hover:text-lime-400 px-3 mx-1 transition ${
-              activeItem === "top" ? "text-lime-400" : ""
-            }`}
-            onClick={() => handleItemClick("top")}
+            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+            onClick={() => handleNavigate("/", "top")}
           >
             INICIO
           </a>
           <a
-            href="#portfolio"
-            className={`nav-item font-bold hover:text-lime-400 px-3 mx-1 transition ${
-              activeItem === "portfolio" ? "text-lime-400" : ""
-            }`}
-            onClick={() => handleItemClick("portfolio")}
+            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+            onClick={() => handleNavigate("/portfolio", "")}
           >
             PORTFOLIO
           </a>
           <a
-            href="#blogs"
-            className={`nav-item font-bold hover:text-lime-400 px-3 mx-1 transition ${
-              activeItem === "blogs" ? "text-lime-400" : ""
-            }`}
-            onClick={() => handleItemClick("blogs")}
+            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+            onClick={() => handleNavigate("/", "blogs-large")}
           >
             BLOGS
           </a>
           <a
-            href="#about-me"
-            className={`nav-item font-bold hover:text-lime-400 px-3 mx-1 transition ${
-              activeItem === "about-me" ? "text-lime-400" : ""
-            }`}
-            onClick={() => handleItemClick("about-me")}
+            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+            onClick={() => handleNavigate("/", "about-me")}
           >
             SOBRE MÍ
           </a>
-
-          <div
-            className={`indicator absolute bottom-0 h-1 bg-lime-400 transition-all ${
-              activeItem === "top"
-                ? "left-0"
-                : activeItem === "portfolio"
-                ? "left-1/4"
-                : activeItem === "about-me"
-                ? "left-2/4"
-                : activeItem === "blogs"
-                ? "left-3/4"
-                : "left-3/4"
-            }`}
-          ></div>
         </nav>
       </div>
       <p className="text-center mt-10 -mb-10 p-5">

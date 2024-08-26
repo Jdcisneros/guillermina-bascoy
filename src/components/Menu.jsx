@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CgMenuRightAlt } from 'react-icons/cg';
 import {  IoIosClose   } from 'react-icons/io';
+import { useNavigate } from "react-router-dom";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,10 +9,22 @@ const Menu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const navigate = useNavigate();
+
+  const handleNavigate = (path, sectionId) => {
+    navigate(path);
+    setTimeout(() => {
+      if (sectionId) {
+        const element = document.querySelector(`#${sectionId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 100); // Ajusta el tiempo si es necesario
+  }
 
   return (
-    <div className="relative lg:hidden ">
-      {/* Botón hamburguesa */}
+    <div>
       <button
         onClick={toggleMenu}
         className="p-2 text-2xl text-gray-900"
@@ -24,7 +37,7 @@ const Menu = () => {
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute  top-8 right-2 text-gray-900 text-2xl"
+          className="absolute  top-3 right-6 text-gray-900 text-2xl"
         >
           < IoIosClose  size={32} />
         </button>
@@ -32,8 +45,8 @@ const Menu = () => {
           <li>
             <a
               className="block p-6 text-gray-700 hover:bg-gray-200 border-b border-gray-300"
-              href="#top"
-              onClick={() => setIsOpen(false)}
+              href="#Inicio"
+              onClick={() => setIsOpen(false) || handleNavigate("/", "top")}
             >
               INICIO
             </a>
@@ -41,8 +54,8 @@ const Menu = () => {
           <li>
             <a
               className="block p-6 text-gray-700 hover:bg-gray-200 border-b border-gray-300"
-              href="#portfolio"
-              onClick={() => setIsOpen(false)}
+              
+              onClick={() => setIsOpen(false) || handleNavigate("/portfolio", "")}
             >
               PORTFOLIO
             </a>
@@ -50,8 +63,7 @@ const Menu = () => {
           <li>
             <a
               className="block p-6 text-gray-700 hover:bg-gray-200 border-b border-gray-300"
-              href="#blogs"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false) || handleNavigate("/blogs", "")}
             >
               BLOGS
             </a>
@@ -60,7 +72,7 @@ const Menu = () => {
             <a
               className="block p-6 text-gray-700 hover:bg-gray-200"
               href="#about-me"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false)  || handleNavigate("/", "about-me")}
             >
               SOBRE MÍ
             </a>
