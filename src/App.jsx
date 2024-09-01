@@ -4,7 +4,9 @@ import Home from "./views/Home"
 import Nav from "./components/Nav";
 import Portfolio from "./views/Porfolio";
 import Footer from "./components/Footer";
-import Socials from "./components/Socials";
+import ScrollTop from "./components/scrollTop";
+import Blogs from "./views/blog";
+
 
 
 
@@ -15,17 +17,19 @@ import Socials from "./components/Socials";
 function App() {
 
   return (
-      <div>
+      <div className="bg-zinc-50">
         <Nav />
+        <ScrollTop/>
         
   <Routes>
   <Route path="/" element={<Home/>} />
   <Route path="/portfolio" element={<Portfolio/>} />
+  <Route path="/blogs" element={<Blogs/>} />
         
         
   </Routes>
   <Footer/>
-  <Socials />
+
       </div>
   )
 }

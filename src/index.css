@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     
+    
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -24,11 +25,11 @@ html{
 .gbBackground {
    
     color: transparent;
-    font-size: 18vw;
+    font-size: 17vw;
     position: absolute;
     -webkit-text-stroke-width: 1.2px;
-  -webkit-text-stroke-color: rgb(0, 0, 0,0.6);
-   z-index: 20;
+  -webkit-text-stroke-color: rgb(0, 0, 0,1);
+  
    position: fixed;
    
    overflow:hidden;
@@ -43,7 +44,7 @@ html{
   @keyframes slideIn {
     0% {
       opacity: 0.5;
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
     50% {
       opacity: 1;
@@ -58,7 +59,7 @@ html{
   @keyframes slideInBg {
     0% {
       opacity: 0;
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
     50% {
       opacity: 0.1;
@@ -73,7 +74,7 @@ html{
   @keyframes slideInFromRight {
     0% {
       opacity: 0;
-      transform: translateX(100%);
+      transform: translateX(50%);
     }
     100% {
       opacity: 1;
@@ -93,47 +94,7 @@ html{
     animation: slideInFromRight 3s forwards;
   }
 
- @keyframes borderLoading {
-    0% {
-      border-image-source: linear-gradient(to right, transparent, transparent);
-      border-image-slice: 2;
-    }
-    50% {
-      border-image-source: linear-gradient(to right, #84cc16, transparent);
-      border-image-slice: 2;
-    }
-    100% {
-      border-image-source: linear-gradient(to right, #84cc16, #84cc16);
-      border-image-slice: 2;
-    }
-  }
-
-  .border-animate {
-    border-style: solid;
-    border-width: 2px;
-    border-image-source: linear-gradient(to right, transparent, transparent);
-    border-image-slice: 1;
-    animation: borderLoading 2s forwards;
-  }
-
-  .group-hover .border-animate {
-    animation: borderLoading 2s forwards;
-  }
-
-  /* Class to reset animation */
-  .reset-animation {
-    animation: none;
-  }
-
-  .collage-item {
-    position: absolute;
-    width: 25%;
-    height: 25%;
-    overflow: hidden;
-  }
-
-  /* Animation for images */
-  @keyframes slideIn {
+  @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(20px);
@@ -143,21 +104,21 @@ html{
       transform: translateY(0);
     }
   }
+  
+  
+  .collage-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .collage-container.hidden {
+    display: none;
+  }
+  
+  .collage-image {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
 
-  /* Applying animation with delay */
-  .animate-slide-in:nth-child(1) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.2s;
-  }
-  .animate-slide-in:nth-child(2) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.4s;
-  }
-  .animate-slide-in:nth-child(3) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.6s;
-  }
-  .animate-slide-in:nth-child(4) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.8s;
-  }
+  

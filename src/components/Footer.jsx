@@ -1,7 +1,8 @@
-import { FaInstagram, FaLinkedin, FaPinterestSquare } from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
+import { FaLinkedin, FaPinterestSquare } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { AiFillTikTok } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { RiInstagramFill } from "react-icons/ri";
 
 function Footer() {
   
@@ -24,61 +25,61 @@ function Footer() {
 
 
   return (
-    <div className="relative w-full mt-10 z-50">
+    <div className="relative w-full">
       <div className="flex flex-row justify-center">
         <a
           href="#instagram"
-          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 my-10 mx-4 transition"
         >
-          <FaInstagram size={30} />
+          <RiInstagramFill size={30} />
         </a>
         <a
           href="#linkedin"
-          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 my-10 mx-4 transition"
         >
           <FaLinkedin size={30} />
         </a>
         <a
           href="#pinterest"
-          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 my-10 mx-4 transition"
         >
           <FaPinterestSquare size={30} />
         </a>
         <a
           href="#mail"
-          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 my-10 mx-4 transition"
         >
-          <HiMail size={32} />
+          <MdEmail size={32}  />
         </a>
         <a
           href="#tiktok"
-          className="nav-item font-bold hover:text-lime-400 my-2 mx-4 transition duration-300"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 my-10 mx-4 transition"
         >
-          <AiFillTikTok size={30} />
+          <AiFillTikTok size={30}  />
         </a>
       </div>
       <div className="flex justify-center items-center mt-5">
       <nav className="justify-center items-center text-stone-900 lg:text-xl text-sm">
           <a
-            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+            className="nav-item font-bold hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 px-3 mx-1 transition cursor-pointer"
             onClick={() => handleNavigate("/", "top")}
           >
             INICIO
           </a>
           <a
-            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+            className="nav-item font-bold hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 px-3 mx-1 transition cursor-pointer"
             onClick={() => handleNavigate("/portfolio", "")}
           >
             PORTFOLIO
           </a>
           <a
-            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
-            onClick={() => handleNavigate("/", "blogs-large")}
+className="nav-item font-bold hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 px-3 mx-1 transition cursor-pointer"
+            onClick={() => handleNavigate("/blogs", "")}
           >
             BLOGS
           </a>
           <a
-            className="nav-item font-bold hover:text-lime-400 px-3 mx-1 transition cursor-pointer"
+           className="nav-item font-bold hover:text-zinc-50 hover:bg-zinc-950 rounded-sm duration-500 px-3 mx-1 transition cursor-pointer"
             onClick={() => handleNavigate("/", "about-me")}
           >
             SOBRE MÍ

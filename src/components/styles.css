@@ -1,126 +1,48 @@
+.menu a {
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+
+}
 
 
-@keyframes slideIn {
-    0% {
-      opacity: 0.5;
-      transform: translateX(-100%);
-    }
-    50% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInBg {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    50% {
-      opacity: 0.1;
-      transform: translateX(0);
-    }
-    100% {
-      opacity: 0.2;
-      transform: translateX(0);
-    }
-  }
+.slick-dots {
+  bottom: 20px; /* Ajusta según sea necesario para la distancia desde el borde inferior */
+  left: 50%; /* Centra horizontalmente en relación al contenedor */
+  transform: translateX(-50%); /* Ajusta la posición para que esté centrado */
+  color:#333;
   
-  @keyframes slideInFromRight {
-    0% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+}
+
+
+/* Estilo del punto inactivo */
+.slick-dots li button {
+  color:#333;
+  border-radius: 50%; /* Forma circular */
+  width: 12px; /* Tamaño del punto */
+  height: 12px; /* Tamaño del punto */
+  border: 2px solid rgba(0, 0, 0, 0.2); /* Borde sutil */
+  transition: all 0.3s ease; /* Transición suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo del punto activo */
+.slick-dots li.slick-active button {
+  color: #333;
+  border: 1px solid #333; /* Borde del punto activo */
+height: 19.1px;
+width: 20.1px;
   
-  .animate-slide-in-left {
-    animation: slideIn 5s forwards;
-  }
+}
 
-  .animate-slide-in-left-Bg {
-    animation: slideInBg 3s forwards;
-  }
-  
-  .animate-slide-in-right {
-    animation: slideInFromRight 3s forwards;
-  }
+.menuHover:hover {
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white;
 
- @keyframes borderLoading {
-    0% {
-      border-image-source: linear-gradient(to right, transparent, transparent);
-      border-image-slice: 2;
-    }
-    50% {
-      border-image-source: linear-gradient(to right, #84cc16, transparent);
-      border-image-slice: 2;
-    }
-    100% {
-      border-image-source: linear-gradient(to right, #84cc16, #84cc16);
-      border-image-slice: 2;
-    }
-  }
+}
 
-  .border-animate {
-    border-style: solid;
-    border-width: 2px;
-    border-image-source: linear-gradient(to right, transparent, transparent);
-    border-image-slice: 1;
-    animation: borderLoading 2s forwards;
-  }
-
-  .group-hover .border-animate {
-    animation: borderLoading 2s forwards;
-  }
-
-  /* Class to reset animation */
-  .reset-animation {
-    animation: none;
-  }
-
-  .collage-item {
-    position: absolute;
-    width: 25%;
-    height: 25%;
-    overflow: hidden;
-  }
-
-  /* Animation for images */
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Applying animation with delay */
-  .animate-slide-in:nth-child(1) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.2s;
-  }
-  .animate-slide-in:nth-child(2) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.4s;
-  }
-  .animate-slide-in:nth-child(3) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.6s;
-  }
-  .animate-slide-in:nth-child(4) {
-    animation: slideIn 1s ease-out forwards;
-    animation-delay: 0.8s;
-  }
-
-
- 
+.text-project h2 {
+  writing-mode: vertical-lr;
+  text-orientation: sideways;
+  transform: rotate(180deg);
+}

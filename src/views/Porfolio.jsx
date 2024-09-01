@@ -1,123 +1,245 @@
-import image1 from "/image1.jpg";
-import image2 from "/image2.jpg";
-import image3 from "/image3.jpg";
-import collage from "/collage.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import imageFeatured from "/collage4.jpg";
+import collage1 from "/collage1.jpg";
+import collage2 from "/collage2.jpg";
+import collage3 from "/collage3.jpg";
+import collage4 from "/collage4.jpg";
+import collage5 from "/collage5.jpg";
+import collage6 from "/collage6.jpg";
+import collage7 from "/collage7.jpg";
+import "../components/styles.css";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const PROJECTOS = [
   {
-    id: "1", // ID único para el proyecto
-    title: "Proyecto 1",
+    id: "1",
+    title: "PROYECTO 1",
     description:
-      "Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripcipción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripcipción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripcipción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1",
-    imageFeatured: image1,
-    collage: collage,
-    images: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc",
+    imageFeatured: imageFeatured,
+    collage: [
       {
-        id: "img1", // ID único para la imagen
-        src: image2,
+        image: collage1,
         title: "Título de la imagen 1",
+        className:
+          "top-[5%] left-[8%] w-[25%] lg:top-[5%] lg:left-[8%] lg:w-[20%] z-20 h-auto",
+        style: {
+          animationDelay: "1s",
+        },
       },
       {
-        id: "img2",
-        src: image3,
+        image: collage2,
         title: "Título de la imagen 2",
+        className:
+          "top-[0%] left-[30%] w-[30%] lg:top-[0%] lg:left-[30%] lg:w-[25%] z-10 h-auto",
+        style: {
+          animationDelay: "3",
+        },
       },
       {
-        id: "img2",
-        src: image3,
-        title: "Título de la imagen 2",
+        image: collage3,
+        title: "Título de la imagen 3",
+        className:
+          "top-[15%] left-[60%] w-[25%] lg:top-[5%] lg:left-[60%] lg:w-[15%] z-30 h-auto",
+        style: {
+          animationDelay: "2.5s",
+        },
       },
       {
-        id: "img2",
-        src: image3,
-        title: "Título de la imagen 2",
+        image: collage4,
+        title: "Título de la imagen 4",
+        className:
+          "top-[40%] left-[30%] w-[20%] lg:top-[38%] lg:left-[20%] lg:w-[20%] z-40 h-auto",
+        style: {
+          animationDelay: "1.5s",
+        },
       },
-      // Puedes agregar más imágenes aquí si es necesario
+      {
+        image: collage5,
+        title: "Título de la imagen 5",
+        className:
+          "top-[30%] left-[45%] w-[25%] lg:top-[30%] lg:left-[45%] lg:w-[25%] z-40 h-auto",
+        style: {
+          animationDelay: "2s",
+        },
+      },
+      {
+        image: collage6,
+        title: "Título de la imagen 6",
+        className:
+          "top-[2%] left-[75%] w-[30%] lg:top-[0%] lg:left-[65%] lg:w-[25%] z-20 h-auto",
+        style: {
+          animationDelay: "3.5s",
+        },
+      },
+      {
+        image: collage7,
+        title: "Título de la imagen 7",
+        className:
+          "top-[50%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20 h-auto",
+        style: {
+          animationDelay: "4s",
+        },
+      },
     ],
   },
   {
-    id: "2", // ID único para el proyecto
-    title: "Proyecto 2",
+    id: "2",
+    title: "PROYECTO 2",
     description:
-      "Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1Descripción del proyecto 1",
-    imageFeatured: image1,
-    collage: collage,
-    images: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc",
+    imageFeatured: imageFeatured,
+    collage: [
       {
-        id: "img1", // ID único para la imagen
-        src: image2,
+        image: collage1,
         title: "Título de la imagen 1",
+        className:
+          "top-[5%] left-[8%] w-[25%] lg:top-[5%] lg:left-[8%] lg:w-[20%] z-20 h-auto",
+        style: {
+          animationDelay: "1s",
+        },
       },
       {
-        id: "img2",
-        src: image3,
+        image: collage2,
         title: "Título de la imagen 2",
+        className:
+          "top-[0%] left-[30%] w-[30%] lg:top-[0%] lg:left-[30%] lg:w-[25%] z-10 h-auto",
+        style: {
+          animationDelay: "3",
+        },
       },
-      // Puedes agregar más imágenes aquí si es necesario
+      {
+        image: collage3,
+        title: "Título de la imagen 3",
+        className:
+          "top-[15%] left-[60%] w-[25%] lg:top-[5%] lg:left-[60%] lg:w-[15%] z-30 h-auto",
+        style: {
+          animationDelay: "2.5s",
+        },
+      },
+      {
+        image: collage4,
+        title: "Título de la imagen 4",
+        className:
+          "top-[40%] left-[30%] w-[20%] lg:top-[38%] lg:left-[20%] lg:w-[20%] z-40 h-auto",
+        style: {
+          animationDelay: "1.5s",
+        },
+      },
+      {
+        image: collage5,
+        title: "Título de la imagen 5",
+        className:
+          "top-[30%] left-[45%] w-[25%] lg:top-[30%] lg:left-[45%] lg:w-[25%] z-40 h-auto",
+        style: {
+          animationDelay: "2s",
+        },
+      },
+      {
+        image: collage6,
+        title: "Título de la imagen 6",
+        className:
+          "top-[2%] left-[75%] w-[30%] lg:top-[0%] lg:left-[65%] lg:w-[25%] z-20 h-auto",
+        style: {
+          animationDelay: "3.5s",
+        },
+      },
+      {
+        image: collage7,
+        title: "Título de la imagen 7",
+        className:
+          "top-[50%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20 h-auto",
+        style: {
+          animationDelay: "4s",
+        },
+      },
     ],
   },
-  // Agrega más proyectos aquí si es necesario
 ];
 
 function Portfolio() {
-  const [showCarousel, setShowCarousel] = useState(false);
+  const [showCollage, setShowCollage] = useState(null);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  const handleShowCollage = (id) => {
+    setShowCollage(showCollage === id ? null : id);
+  };
 
   return (
-    <div className="flex flex-col items-center mt-14 p-8">
-      <h1 className="text-5xl font-extrabold text-gray-900 mb-12">Portfolio</h1>
-      <div className="w-[1500px] mx-auto">
+    <div className="flex flex-col items-center mt-10 p-8 bg z-">
+      <h1 className="text-5xl font-extrabold text-zinc-950 ">PORTFOLIO</h1>
+      <div className="w-full">
         <ul className="space-y-16">
-          {PROJECTOS.map(({ id, title, description, imageFeatured, images, collage }) => (
-            <li key={id} className="relative bg-white shadow-lg rounded-lg overflow-hidden">
-              <div className="flex flex-col md:flex-row items-start p-6 space-x-6">
-                <div className="md:w-1/2 flex-shrink-0">
-                  <img
-                    src={imageFeatured}
-                    alt={`Featured image for ${title}`}
-                    className="w-3/4 h-96 object-cover rounded-lg"
-                  />
+          {PROJECTOS.map(
+            ({ id, title, description, imageFeatured, collage }) => (
+              <li
+                key={id}
+                className="relative bg-white p-8 mt-10 rounded-sm shadow-lg"
+              >
+                <div className="flex flex-row items-center justify-center ">
+                  <div className="absolute flex justify-between w-full  text-project items-center ">
+                    <h2 className="lg:ml-20 font-bold lg:text-2xl text-sm">
+                      {title}
+                    </h2>
+                    <h2 className="lg:mr-20 font-bold lg:text-2xl text-sm">
+                      REFERENCIA DEL PROYECTO
+                    </h2>
+                  </div>
+                  <div className="md:w-1/3 mb-10 ">
+                    <img
+                      src={imageFeatured}
+                      alt={`Featured image for ${title}`}
+                      className="w-full object-cover rounded-sm"
+                    />
+                  </div>
+                  <div className="lg:w-[640px] w-[640px] lg:h-[540px] h-full flex flex-col justify-center lg:p-10 p-3 -ml-10 text-pretty bg-zinc-950 rounded-sm">
+                    <h2 className="lg:text-7xl text-3xl font-bold text-zinc-50">
+                      {title}
+                    </h2>
+                    <p className="text-zinc-50 mt-10 text-xs">{description}</p>
+                  </div>
                 </div>
-                <div className="md:w-1/2 flex flex-col justify-center space-y-4">
-                  <h2 className="text-3xl font-semibold text-gray-900">{title}</h2>
-                  <p className="text-gray-700">{description}</p>
-                </div>
-              </div>
-              <div className="mt-6">
-                <img
-                  src={collage}
-                  alt="Collage"
-                  className="w-full object-cover rounded-lg"
-                />
-              </div>
-              <div className="flex justify-center mt-6">
-                <button
-                  onClick={() => setShowCarousel((prev) => !prev)}
-                  className="py-1 px-5 my-10 border-2 rounded border-stone-950 hover:bg-lime-500 text-stone-950 font-bold hover:border-lime-500 transition-colors duration-300 transform hover:translate-y-[-2px]"
-                >
-                  {showCarousel ? 'VER MENOS' : 'VER MAS'}
-                </button>
-              </div>
-              {showCarousel && (
-                <div className="mt-6 flex flex-wrap gap-6 justify-center">
-                  {images.map((image) => (
-                    <div key={image.id} className="w-full sm:w-1/2 lg:w-1/3 p-2">
+
+                <div className="relative ">
+                  <div className="flex justify-center p-3">
+                    <button
+                      onClick={() => handleShowCollage(id)}
+                      className="px-2 text-2xl items-center font-extrabold text-zinc-950 rounded-lg hover:text-zinc-50 hover:bg-zinc-950"
+                    >
+                      {showCollage === id ? (
+                        <div className="flex items-center">
+                          <span>VER MENOS</span>
+                          <MdKeyboardArrowUp size={30} />
+                        </div>
+                      ) : (
+                        <div className="flex items-center">
+                          <span>VER MÁS</span>
+                          <MdKeyboardArrowDown size={30} />
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                  <div
+                    className={`collage-container lg:h-[900px] h-[300px] ${
+                      showCollage === id ? "" : "hidden"
+                    }`}
+                  >
+                    {collage.map((item, index) => (
                       <img
-                        src={image.src}
-                        alt={image.title}
-                        className="w-full h-48 object-cover rounded-lg shadow-md"
+                        key={index}
+                        src={item.image}
+                        alt={item.title}
+                        className={`absolute object-cover collage-image ${item.className}`}
+                        style={{
+                          ...item.style,
+                          animationDelay: item.style.animationDelay,
+                        }}
                       />
-                      <p className="text-gray-800 font-medium mt-2">{image.title}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              )}
-            </li>
-          ))}
+              </li>
+            )
+          )}
         </ul>
       </div>
     </div>

@@ -1,40 +1,45 @@
-import { FaInstagram, FaLinkedin, FaPinterestSquare} from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
+import { FaLinkedin, FaPinterestSquare} from "react-icons/fa";
+
 import { AiFillTikTok } from "react-icons/ai";
+import { RiInstagramFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+
 
 function Socials() {
   return (
-    <div className=" hidden lg:flex md:flex fixed top-1/2 transform -translate-y-1/2 left-0 z-50">
-      <div className="flex flex-col items-center text-stone-900 text-xl bg-white/50 p-2 shadow-lg rounded">
-        <a
-          href="#instagram"
-          className="nav-item font-bold hover:text-lime-400 my-2 transition"
-        >
-          <FaInstagram size={30} />
-        </a>
+    <div className=" hidden lg:absolute md:flex  top-1/2 transform -translate-y-1/2 left-0 z-50">
+      <div className="flex flex-col items-center text-stone-900 text-xl  p-2 rounded">
+        
         <a
           href="#linkedin"
-          className="nav-item font-bold hover:text-lime-400 my-2 transition"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm p-1 my-1 duration-500"
         >
-          <FaLinkedin size={30} />
-        </a>
-        <a
-          href="#pinterest"
-          className="nav-item font-bold hover:text-lime-400 my-2 transition"
-        >
-          <FaPinterestSquare size={30} />
+          <FaLinkedin size={24} />
         </a>
         <a
           href="#mail"
-          className="nav-item font-bold hover:text-lime-400 my-2 transition"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm p-1 my-1  duration-500"
         >
-          <HiMail  size={30} />
+          <MdEmail  size={24} />
         </a>
         <a
-          href="#tiktok"
-          className="nav-item font-bold hover:text-lime-400 my-2 transition"
+          href="#instagram"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm p-1 my-1 duration-500"
         >
-          <AiFillTikTok  size={30} />
+          <RiInstagramFill size={24} />
+        </a>
+        <a
+          href="#pinterest"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm p-1 my-1  duration-500"
+        >
+          <FaPinterestSquare size={24} />
+        </a>
+       
+        <a
+          href="#tiktok"
+          className="hover:text-zinc-50 hover:bg-zinc-950 rounded-sm p-1 my-1  duration-500"
+        >
+          <AiFillTikTok  size={24} />
         </a>
       </div>
     </div>
