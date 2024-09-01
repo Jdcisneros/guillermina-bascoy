@@ -49,7 +49,7 @@ const Menu = () => {
         <ul className="flex flex-col h-full cursor-pointer menu ">
           <li  className='mt-5'>
             <a
-              className="px-6 text-zinc-50 font-bold text-7xl menuHover hover:text-zinc-950 "
+              className="px-6 text-zinc-50 font-bold text-6xl lg:text-7xl menuHover hover:text-zinc-950 "
               
               onClick={() => setIsOpen(false) || handleNavigate("/", "top")}
             >
@@ -58,7 +58,7 @@ const Menu = () => {
           </li>
           <li className='mt-5'>
             <a
-              className="px-6 text-zinc-50 font-bold text-7xl menuHover hover:text-zinc-950 "
+              className="px-6 text-zinc-50 font-bold text-6xl lg:text-7xlmenuHover hover:text-zinc-950 "
               
               onClick={() => setIsOpen(false) || handleNavigate("/portfolio", "")}
             >
@@ -67,7 +67,7 @@ const Menu = () => {
           </li>
           <li  className='mt-5'>
             <a
-              className="px-6 text-zinc-50 font-bold text-7xl menuHover hover:text-zinc-950 "
+              className="px-6 text-zinc-50 font-bold text-6xl lg:text-7xl menuHover hover:text-zinc-950 "
               onClick={() => setIsOpen(false) || handleNavigate("/blogs", "")}
             >
               BLOGS
@@ -75,7 +75,7 @@ const Menu = () => {
           </li >
           <li  className='mt-5'>
             <a
-              className="px-6 text-zinc-50 font-bold text-7xl menuHover hover:text-zinc-950 "
+              className="px-6 text-zinc-50 font-bold text-6xl lg:text-7xl menuHover hover:text-zinc-950 "
               href="#about-me"
               onClick={() => setIsOpen(false)  || handleNavigate("/", "about-me")}
             >

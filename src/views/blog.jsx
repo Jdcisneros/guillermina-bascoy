@@ -41,7 +41,7 @@ const Blogs = () => {
       <h1 className="text-5xl font-extrabold text-zinc-950 ">BLOGS</h1>
       <div className="space-y-4">
         {blogPosts.map((post) => (
-          <div key={post.id} className=" mt-10 border p-4 rounded-lg shadow-md bg-white w-[440px] lg:w-[1200px] md:w-[800px]">
+          <div key={post.id} className=" mt-10 border p-4 rounded-lg shadow-md bg-white w-[390px] lg:w-[1200px] md:w-[800px]">
             <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
             <p className="text-sm text-gray-500 mb-2">{post.date}</p>
             <p className="mb-4">{post.summary}</p>

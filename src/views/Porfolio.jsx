@@ -165,7 +165,7 @@ function Portfolio() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10 p-8 bg z-">
+    <div className="flex flex-col items-center mt-10 p-2 bg z-">
       <h1 className="text-5xl font-extrabold text-zinc-950 ">PORTFOLIO</h1>
       <div className="w-full">
         <ul className="space-y-16">
@@ -173,9 +173,9 @@ function Portfolio() {
             ({ id, title, description, imageFeatured, collage }) => (
               <li
                 key={id}
-                className="relative bg-white p-8 mt-10 rounded-sm shadow-lg"
+                className="relative bg-white p-6 mt-10 rounded-sm shadow-lg"
               >
-                <div className="flex flex-row items-center justify-center ">
+                <div className="lg:flex lg:flex-row flex flex-col items-center justify-center ">
                   <div className="absolute flex justify-between w-full  text-project items-center ">
                     <h2 className="lg:ml-20 font-bold lg:text-2xl text-sm">
                       {title}
@@ -184,18 +184,18 @@ function Portfolio() {
                       REFERENCIA DEL PROYECTO
                     </h2>
                   </div>
-                  <div className="md:w-1/3 mb-10 ">
+                  <div className="md:w-1/3 mb-10 w-full">
                     <img
                       src={imageFeatured}
                       alt={`Featured image for ${title}`}
                       className="w-full object-cover rounded-sm"
                     />
                   </div>
-                  <div className="lg:w-[640px] w-[640px] lg:h-[540px] h-full flex flex-col justify-center lg:p-10 p-3 -ml-10 text-pretty bg-zinc-950 rounded-sm">
+                  <div className="lg:w-[640px] w-[300px] lg:h-[540px] items-center -mt-14 h-full flex flex-col justify-center lg:p-10 p-3 lg:-ml-10 text-pretty bg-zinc-950 rounded-sm">
                     <h2 className="lg:text-7xl text-3xl font-bold text-zinc-50">
                       {title}
                     </h2>
-                    <p className="text-zinc-50 mt-10 text-xs">{description}</p>
+                    <p className="text-zinc-50 mt-10 text-xs text-center">{description}</p>
                   </div>
                 </div>
 

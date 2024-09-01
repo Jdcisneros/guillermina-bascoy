@@ -69,7 +69,7 @@ function Carrusel() {
                 <img
                   src={image.image2}
                   alt={`image${index + 1}`}
-                  className={`object-cover h-[500px] w-1/3 lg:w-1/4 relative left-10 lg:left-60 rounded-sm ${
+                  className={`object-cover h-[500px] w-1/3 lg:w-1/4 relative left-7 lg:left-60 rounded-sm ${
                     currentSlide === index ? "animate-slide-in-right" : ""
                   }`}
                 />
