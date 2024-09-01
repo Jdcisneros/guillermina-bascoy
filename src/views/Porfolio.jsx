@@ -76,7 +76,7 @@ const PROJECTOS = [
         image: collage7,
         title: "Título de la imagen 7",
         className:
-          "top-[50%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20 h-auto",
+          "top-[30%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20 h-auto",
         style: {
           animationDelay: "4s",
         },
@@ -148,7 +148,7 @@ const PROJECTOS = [
         image: collage7,
         title: "Título de la imagen 7",
         className:
-          "top-[50%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20 h-auto",
+          "top-[30%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20 h-auto",
         style: {
           animationDelay: "4s",
         },
@@ -203,7 +203,7 @@ function Portfolio() {
                   <div className="flex justify-center p-3">
                     <button
                       onClick={() => handleShowCollage(id)}
-                      className="px-2 text-2xl items-center font-extrabold text-zinc-950 rounded-lg hover:text-zinc-50 hover:bg-zinc-950"
+                      className="px-2 text-1xl items-center font-extrabold text-zinc-950 rounded-lg hover:text-zinc-50 hover:bg-zinc-950"
                     >
                       {showCollage === id ? (
                         <div className="flex items-center">
