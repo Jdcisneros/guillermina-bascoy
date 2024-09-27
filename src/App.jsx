@@ -6,6 +6,7 @@ import Portfolio from "./views/Porfolio";
 import Footer from "./components/Footer";
 import ScrollTop from "./components/scrollTop";
 import Blogs from "./views/blog";
+import Admin from "./components/admin/admin";
 
 
 
@@ -25,6 +26,7 @@ function App() {
   <Route path="/" element={<Home/>} />
   <Route path="/portfolio" element={<Portfolio/>} />
   <Route path="/blogs" element={<Blogs/>} />
+  <Route path="/admin" element={<Admin/>} />
         
         
   </Routes>

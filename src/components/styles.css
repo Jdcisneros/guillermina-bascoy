@@ -46,3 +46,46 @@ width: 20.1px;
   text-orientation: sideways;
   transform: rotate(180deg);
 }
+
+
+.carousel .slide img {
+  width: 100%;
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.carousel .carousel-control {
+  display: none; /* Oculta los controles para una vista más limpia en móviles */
+}
+
+/* Asegúrate de que el carrusel se ajuste al contenedor */
+.carousel .carousel .carousel-slider {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .blog-post {
+    padding: 1rem;
+    font-size: 14px;
+  }
+
+  .blog-post h2 {
+    font-size: 1.5rem;
+  }
+
+  .blog-post p {
+    font-size: 1rem;
+  }
+
+  /* Ajusta el carrusel para móviles */
+  .carousel .slide img {
+    max-height: 300px; /* Limita la altura máxima de las imágenes en móviles */
+  }
+}
+
+.imgBottom {
+  
+   
+  mask-image:linear-gradient(
+    black 80%, transparent 96%
+  )
+}

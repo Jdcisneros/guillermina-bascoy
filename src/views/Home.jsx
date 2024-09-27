@@ -71,7 +71,7 @@ function Home() {
           SOBRE MÍ
         </h2>
         <div className="flex flex-col lg:flex-row items-center justify-center w-full ">
-        <img src={aboutme} className="object-cover lg:h-[500px] lg:w-2/9 w-1/2 mx-20 "  />
+        <img src={aboutme} className="object-cover lg:w-2/9 w-1/5 mx-20 imgBottom "  />
         <p className="text-pretty animate-slide-in-right transform duration-3000 w-[340px] lg:w-[740px] text-center m-10 text-stone-50 ">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
           metus tellus. Etiam blandit aliquet lorem nec varius. Nulla tincidunt

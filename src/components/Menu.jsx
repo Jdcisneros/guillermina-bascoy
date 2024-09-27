@@ -58,7 +58,7 @@ const Menu = () => {
           </li>
           <li className='mt-5'>
             <a
-              className="px-6 text-zinc-50 font-bold text-6xl lg:text-7xlmenuHover hover:text-zinc-950 "
+              className="px-6 text-zinc-50 font-bold text-6xl lg:text-7xl menuHover hover:text-zinc-950 "
               
               onClick={() => setIsOpen(false) || handleNavigate("/portfolio", "")}
             >
