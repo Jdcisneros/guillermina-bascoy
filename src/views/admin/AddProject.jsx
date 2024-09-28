@@ -60,45 +60,60 @@ const AddProject = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        name="titulo" 
-        value={formData.titulo} 
-        onChange={handleChange} 
-        placeholder="Título" 
-        required 
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-white shadow-md rounded-md">
+      <input
+        type="text"
+        name="titulo"
+        value={formData.titulo}
+        onChange={handleChange}
+        placeholder="Título"
+        required
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <textarea 
-        name="parrafo" 
-        value={formData.parrafo} 
-        onChange={handleChange} 
-        placeholder="Descripción" 
-        required 
+      
+      <textarea
+        name="parrafo"
+        value={formData.parrafo}
+        onChange={handleChange}
+        placeholder="Descripción"
+        required
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <input 
-        type="file" 
-        name="imagen_principal" 
-        onChange={handleFileChange} 
-        accept="image/*" 
-        required 
+      
+      <input
+        type="file"
+        name="imagen_principal"
+        onChange={handleFileChange}
+        accept="image/*"
+        required
+        className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <input 
-        type="text" 
-        name="referencia" 
-        value={formData.referencia} 
-        onChange={handleChange} 
-        placeholder="Referencia" 
+      
+      <input
+        type="text"
+        name="referencia"
+        value={formData.referencia}
+        onChange={handleChange}
+        placeholder="Referencia"
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <input 
-        type="file" 
-        name="collage" 
-        onChange={handleFileChange} 
-        multiple 
-        accept="image/*" 
-        required 
+      
+      <input
+        type="file"
+        name="collage"
+        onChange={handleFileChange}
+        multiple
+        accept="image/*"
+        required
+        className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button type="submit">Agregar Proyecto</button>
+      
+      <button
+        type="submit"
+        className="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out"
+      >
+        Agregar Proyecto
+      </button>
     </form>
   );
 };

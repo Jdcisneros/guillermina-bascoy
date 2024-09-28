@@ -54,12 +54,51 @@ const AddBlog = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="titulo" value={formData.titulo} onChange={handleChange} placeholder="Título" required />
-      <textarea name="resumen" value={formData.resumen} onChange={handleChange} placeholder="Resumen" required />
-      <textarea name="parrafo" value={formData.parrafo} onChange={handleChange} placeholder="Contenido" required />
-      <input type="file" name="imagenes" onChange={handleChange} accept="image/*" multiple required />
-      <button type="submit">Agregar Blog</button>
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-white shadow-md rounded-md">
+      <input
+        type="text"
+        name="titulo"
+        value={formData.titulo}
+        onChange={handleChange}
+        placeholder="Título"
+        required
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      
+      <textarea
+        name="resumen"
+        value={formData.resumen}
+        onChange={handleChange}
+        placeholder="Resumen"
+        required
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      
+      <textarea
+        name="parrafo"
+        value={formData.parrafo}
+        onChange={handleChange}
+        placeholder="Contenido"
+        required
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      
+      <input
+        type="file"
+        name="imagenes"
+        onChange={handleChange}
+        accept="image/*"
+        multiple
+        required
+        className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      
+      <button
+        type="submit"
+        className="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out"
+      >
+        Agregar Blog
+      </button>
     </form>
   );
 };
