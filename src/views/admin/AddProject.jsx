@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -38,6 +37,8 @@ const AddProject = () => {
     formData.collage.forEach((file) => {
       data.append('collage', file);
     });
+
+    console.log("Data para enviar:", Array.from(data.entries())); // Verifica que se estén enviando los archivos
 
     try {
       const response = await axios.post('http://localhost:3000/proyectos', data, {

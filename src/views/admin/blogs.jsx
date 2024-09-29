@@ -29,10 +29,17 @@ const Blogs = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+  
+    // Validar que no haya campos vacíos
+    if (!editBlog.titulo || !editBlog.resumen || !editBlog.parrafo) {
+      console.error('Faltan campos requeridos para actualizar el blog');
+      return;
+    }
+  
     try {
       await axios.put(`http://localhost:3000/blogs/${editBlog.id}`, editBlog);
-      setEditBlog(null); // Salir del modo edición
-      fetchBlogs(); // Refrescar la lista
+      setEditBlog(null);
+      fetchBlogs();
     } catch (error) {
       console.error('Error al actualizar el blog:', error);
     }

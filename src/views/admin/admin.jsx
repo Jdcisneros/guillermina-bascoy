@@ -7,6 +7,7 @@ function Admin() {
   return (
     <div className="flex justify-center flex-col p-10 w-full">
     <h1>Dashboard de Administración</h1>
+
     <div className="m-5">
     <Blogs/>
     <h2 className="m-5">Agregar Blog</h2>

@@ -11,10 +11,9 @@ const AddBlog = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-    // Si es un input de tipo archivo, actualizamos las imágenes
+  
     if (name === 'imagenes') {
-      setFormData({ ...formData, imagenes: files });
+      setFormData({ ...formData, imagenes: Array.from(files) }); // Convertir FileList a Array
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -22,17 +21,18 @@ const AddBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const data = new FormData();
     data.append('titulo', formData.titulo);
     data.append('resumen', formData.resumen);
     data.append('parrafo', formData.parrafo);
-
+  
     // Agregar las imágenes al FormData
     for (let i = 0; i < formData.imagenes.length; i++) {
       data.append('imagenes', formData.imagenes[i]);
     }
-
+  
+    console.log("Data para enviar:", Array.from(data.entries())); // Verifica que se estén enviando los archivos
     try {
       const response = await axios.post('http://localhost:3000/blogs', data, {
         headers: {
@@ -40,14 +40,7 @@ const AddBlog = () => {
         },
       });
       console.log('Blog creado:', response.data);
-      
       // Resetear el formulario si es necesario
-      setFormData({
-        titulo: '',
-        resumen: '',
-        parrafo: '',
-        imagenes: [],
-      });
     } catch (error) {
       console.error('Error al crear el blog:', error);
     }
@@ -84,15 +77,13 @@ const AddBlog = () => {
       />
       
       <input
-        type="file"
-        name="imagenes"
-        onChange={handleChange}
-        accept="image/*"
-        multiple
-        required
-        className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      
+  type="file"
+  name="imagenes" // Este nombre debe coincidir con el que se usa en el backend
+  onChange={handleChange}
+  accept="image/*"
+  multiple
+  required
+/>
       <button
         type="submit"
         className="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out"
