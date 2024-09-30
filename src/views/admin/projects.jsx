@@ -6,6 +6,7 @@ const Projects = () => {
   const [editProject, setEditProject] = useState(null);
   const [newMainImage, setNewMainImage] = useState(null);
   const [newCollageImages, setNewCollageImages] = useState([]);
+  const [collageToRemove, setCollageToRemove] = useState([]);
 
   useEffect(() => {
     fetchProjects();
@@ -33,29 +34,29 @@ const Projects = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-  
+    
     if (!editProject.titulo || !editProject.parrafo || !editProject.referencia) {
       console.error('Faltan campos requeridos para actualizar el proyecto');
       return;
     }
-  
+    
     const formData = new FormData();
-  
+    
     formData.append('titulo', editProject.titulo);
     formData.append('parrafo', editProject.parrafo);
     formData.append('referencia', editProject.referencia);
-  
-    // Enviar null si la imagen principal fue eliminada
+    
     if (newMainImage) {
       formData.append('imagen_principal', newMainImage);
     } else if (!editProject.imagen_principal) {
       formData.append('imagen_principal', null);
     }
   
-    // Solo agregar nuevas imágenes del collage
     newCollageImages.forEach((image) => {
       formData.append('collage', image);
     });
+  
+    formData.append('collageToRemove', JSON.stringify(collageToRemove)); // Enviar las imágenes a eliminar
   
     try {
       await axios.put(`http://localhost:3000/proyectos/${editProject.id}`, formData, {
@@ -64,16 +65,22 @@ const Projects = () => {
         },
       });
       setEditProject(null);
-      setNewCollageImages([]); // Limpiar las nuevas imágenes después de la actualización
+      setNewCollageImages([]);
+      setCollageToRemove([]); // Limpiar después de la actualización
       fetchProjects();
     } catch (error) {
       console.error('Error al actualizar el proyecto:', error);
     }
   };
 
+  
   const handleRemoveImage = (index) => {
-    const updatedCollage = editProject.collage.filter((_, i) => i !== index);
-    setEditProject({ ...editProject, collage: updatedCollage });
+    const removedUrl = editProject.collage[index];
+    setEditProject((prev) => ({
+      ...prev,
+      collage: prev.collage.filter((_, i) => i !== index),
+    }));
+    setCollageToRemove((prev) => [...prev, removedUrl]); // Guardar la URL para eliminar
   };
 
   const handleCollageImageChange = (e) => {

@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [editBlog, setEditBlog] = useState(null);
+  const [newImages, setNewImages] = useState([]); // Para las nuevas imágenes a agregar
+  const [imagesToRemove, setImagesToRemove] = useState([]); // Para las imágenes a eliminar
 
   useEffect(() => {
     fetchBlogs();
@@ -24,7 +26,9 @@ const Blogs = () => {
   };
 
   const handleEdit = (blog) => {
-    setEditBlog(blog);
+    setEditBlog({ ...blog, imagenes: [...blog.imagenes] }); // Copia las imágenes
+    setNewImages([]); // Reiniciar nuevas imágenes
+    setImagesToRemove([]); // Reiniciar imágenes a eliminar
   };
 
   const handleUpdate = async (e) => {
@@ -34,9 +38,26 @@ const Blogs = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append('titulo', editBlog.titulo);
+    formData.append('resumen', editBlog.resumen);
+    formData.append('parrafo', editBlog.parrafo);
+
+    newImages.forEach((image) => {
+      formData.append('imagenes', image);
+    });
+
+    formData.append('imagesToRemove', JSON.stringify(imagesToRemove)); // Agregar imágenes a eliminar
+
     try {
-      await axios.put(`http://localhost:3000/blogs/${editBlog.id}`, editBlog);
+      await axios.put(`http://localhost:3000/blogs/${editBlog.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       setEditBlog(null);
+      setNewImages([]);
+      setImagesToRemove([]); // Limpiar después de la actualización
       fetchBlogs();
     } catch (error) {
       console.error('Error al actualizar el blog:', error);
@@ -45,12 +66,14 @@ const Blogs = () => {
 
   const handleChangeImages = (e) => {
     const files = Array.from(e.target.files);
-    setEditBlog({ ...editBlog, imagenes: files.map(file => URL.createObjectURL(file)) });
+    setNewImages(files); // Guardar archivos nuevos
   };
 
   const handleRemoveImage = (index) => {
+    const removedUrl = editBlog.imagenes[index]; // Obtener URL de la imagen que se va a eliminar
     const newImages = editBlog.imagenes.filter((_, i) => i !== index);
     setEditBlog({ ...editBlog, imagenes: newImages });
+    setImagesToRemove((prev) => [...prev, removedUrl]); // Guardar URL para eliminar
   };
 
   return (
