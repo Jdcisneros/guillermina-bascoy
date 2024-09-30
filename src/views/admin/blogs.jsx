@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
-  const [editBlog, setEditBlog] = useState(null); // Para manejar la edición
+  const [editBlog, setEditBlog] = useState(null);
 
   useEffect(() => {
     fetchBlogs();
@@ -17,25 +17,23 @@ const Blogs = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/blogs/${id}`);
-      fetchBlogs(); // Refrescar la lista
+      fetchBlogs();
     } catch (error) {
       console.error('Error al eliminar el blog:', error);
     }
   };
 
   const handleEdit = (blog) => {
-    setEditBlog(blog); // Establecer el blog en modo edición
+    setEditBlog(blog);
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-  
-    // Validar que no haya campos vacíos
     if (!editBlog.titulo || !editBlog.resumen || !editBlog.parrafo) {
       console.error('Faltan campos requeridos para actualizar el blog');
       return;
     }
-  
+
     try {
       await axios.put(`http://localhost:3000/blogs/${editBlog.id}`, editBlog);
       setEditBlog(null);
@@ -45,10 +43,21 @@ const Blogs = () => {
     }
   };
 
+  const handleChangeImages = (e) => {
+    const files = Array.from(e.target.files);
+    setEditBlog({ ...editBlog, imagenes: files.map(file => URL.createObjectURL(file)) });
+  };
+
+  const handleRemoveImage = (index) => {
+    const newImages = editBlog.imagenes.filter((_, i) => i !== index);
+    setEditBlog({ ...editBlog, imagenes: newImages });
+  };
+
   return (
-    <div className="">
+    <div className="p-5">
+      <h1 className="text-2xl font-bold mb-4">Blogs</h1>
       {editBlog ? (
-        <form onSubmit={handleUpdate} className="space-y-4 bg-white shadow-md rounded-md p-4">
+        <form onSubmit={handleUpdate} className="space-y-4 bg-white shadow-md rounded-md p-4 mb-5">
           <input
             type="text"
             name="titulo"
@@ -58,7 +67,7 @@ const Blogs = () => {
             required
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          
+
           <textarea
             name="resumen"
             value={editBlog.resumen}
@@ -67,7 +76,7 @@ const Blogs = () => {
             required
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          
+
           <textarea
             name="parrafo"
             value={editBlog.parrafo}
@@ -76,7 +85,33 @@ const Blogs = () => {
             required
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+
+          <input
+            type="file"
+            onChange={handleChangeImages}
+            accept="image/*"
+            multiple
+          />
           
+          <div className="flex flex-wrap gap-2 mt-2">
+            {editBlog.imagenes && editBlog.imagenes.map((imagen, index) => (
+              <div key={index} className="relative">
+                <img
+                  src={imagen}
+                  alt={`Imagen de ${editBlog.titulo}`}
+                  className="w-32 h-32 object-cover rounded-md"
+                />
+                <button
+                  type="button"
+                  onClick={() => handleRemoveImage(index)}
+                  className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
+
           <button
             type="submit"
             className="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out"
@@ -93,10 +128,28 @@ const Blogs = () => {
         </form>
       ) : (
         blogs.map(blog => (
-          <div key={blog.id} className="p-3 bg-white shadow-md rounded-md mb-4">
-            <h2 className="text-xl font-semibold">Título: {blog.titulo}</h2>
-            <p className="text-gray-700">Resumen: {blog.resumen}</p>
-            <div className="mt-2">
+          <div key={blog.id} className="p-4 bg-white shadow-md rounded-md mb-4 border border-gray-200">
+            <h2 className="text-xl font-semibold">{blog.titulo}</h2>
+            <p className="text-gray-700 mb-2">{blog.resumen}</p>
+            <p className="text-gray-600 mb-2">{blog.parrafo}</p>
+
+            {blog.imagenes && blog.imagenes.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {blog.imagenes.map((imagen, index) => (
+                  <img
+                    key={index}
+                    src={imagen}
+                    alt={`Imagen de ${blog.titulo}`}
+                    className="w-32 h-32 object-cover rounded-md"
+                  />
+                ))}
+              </div>
+            )}
+
+            <p className="text-gray-500 mt-2">Creado: {new Date(blog.createdAt).toLocaleDateString()}</p>
+            <p className="text-gray-500">Actualizado: {new Date(blog.updatedAt).toLocaleDateString()}</p>
+
+            <div className="mt-4 flex justify-end space-x-2">
               <button
                 className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-300 ease-in-out"
                 onClick={() => handleDelete(blog.id)}
@@ -104,7 +157,7 @@ const Blogs = () => {
                 Eliminar
               </button>
               <button
-                className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 ease-in-out ml-2"
+                className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 ease-in-out"
                 onClick={() => handleEdit(blog)}
               >
                 Editar
