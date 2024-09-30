@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [editProject, setEditProject] = useState(null);
+  const [newMainImage, setNewMainImage] = useState(null);
+  const [newCollageImages, setNewCollageImages] = useState([]);
 
   useEffect(() => {
     fetchProjects();
@@ -25,28 +27,62 @@ const Projects = () => {
 
   const handleEdit = (project) => {
     setEditProject(project);
+    setNewMainImage(null);
+    setNewCollageImages([]);
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-
+  
     if (!editProject.titulo || !editProject.parrafo || !editProject.referencia) {
       console.error('Faltan campos requeridos para actualizar el proyecto');
       return;
     }
-    console.log(editProject.id)
+  
+    const formData = new FormData();
+  
+    formData.append('titulo', editProject.titulo);
+    formData.append('parrafo', editProject.parrafo);
+    formData.append('referencia', editProject.referencia);
+  
+    // Enviar null si la imagen principal fue eliminada
+    if (newMainImage) {
+      formData.append('imagen_principal', newMainImage);
+    } else if (!editProject.imagen_principal) {
+      formData.append('imagen_principal', null);
+    }
+  
+    // Solo agregar nuevas imágenes del collage
+    newCollageImages.forEach((image) => {
+      formData.append('collage', image);
+    });
+  
     try {
-      await axios.put(`http://localhost:3000/projects/${editProject.id}`, editProject);
+      await axios.put(`http://localhost:3000/proyectos/${editProject.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       setEditProject(null);
+      setNewCollageImages([]); // Limpiar las nuevas imágenes después de la actualización
       fetchProjects();
     } catch (error) {
       console.error('Error al actualizar el proyecto:', error);
     }
   };
 
-  const handleRemoveCollageImage = (index) => {
-    const newCollage = editProject.collage.filter((_, i) => i !== index);
-    setEditProject({ ...editProject, collage: newCollage });
+  const handleRemoveImage = (index) => {
+    const updatedCollage = editProject.collage.filter((_, i) => i !== index);
+    setEditProject({ ...editProject, collage: updatedCollage });
+  };
+
+  const handleCollageImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setNewCollageImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const handleRemoveMainImage = () => {
+    setEditProject({ ...editProject, imagen_principal: null });
   };
 
   return (
@@ -83,36 +119,63 @@ const Projects = () => {
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          {/* Mostrar la imagen principal */}
-          <div>
-            <h3>Imagen Principal</h3>
-            <img
-              src={editProject.imagen_principal}
-              alt={`Imagen principal de ${editProject.titulo}`}
-              className="w-full h-48 object-cover rounded-md mb-2"
-            />
-          </div>
+          {/* Mostrar y eliminar imagen principal */}
+        {editProject.imagen_principal && (
+  <div className="flex items-center">
+    <img
+      src={editProject.imagen_principal}
+      alt="Imagen principal"
+      className="w-32 h-32 object-cover rounded-md mr-2"
+    />
+    <button
+      type="button"
+      onClick={handleRemoveMainImage}
+      className="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-700 transition duration-300 ease-in-out"
+    >
+      Eliminar Imagen Principal
+    </button>
+  </div>
+)}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setNewMainImage(e.target.files[0])}
+            className="mt-2"
+          />
 
-          {/* Mostrar y permitir la eliminación de las imágenes del collage */}
-          <h3>Collage</h3>
-          <div className="flex flex-wrap gap-2 mt-2">
-            {editProject.collage && editProject.collage.map((imagen, index) => (
-              <div key={index} className="relative">
-                <img
-                  src={imagen}
-                  alt={`Collage de ${editProject.titulo}`}
-                  className="w-32 h-32 object-cover rounded-md"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveCollageImage(index)}
-                  className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
-                >
-                  X
-                </button>
+          {/* Mostrar y eliminar imágenes del collage */}
+          {editProject.collage && editProject.collage.length > 0 && (
+            <div className="mt-4">
+              <h3 className="font-semibold mb-2">Collage</h3>
+              <div className="flex flex-wrap gap-2">
+                {editProject.collage.map((imagen, index) => (
+                  <div key={index} className="relative">
+                    <img
+                      src={imagen}
+                      alt={`Collage ${index + 1}`}
+                      className="w-32 h-32 object-cover rounded-md"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveImage(index)}
+                      className="absolute top-0 right-0 bg-red-500 text-white font-bold text-xs py-1 px-2 rounded hover:bg-red-700 transition duration-300 ease-in-out"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          )}
+
+          {/* Input para agregar nuevas imágenes al collage */}
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleCollageImageChange}
+            className="mt-2"
+          />
 
           <button
             type="submit"
@@ -135,12 +198,14 @@ const Projects = () => {
             <p className="text-gray-700 mb-2">{project.parrafo}</p>
             <p className="text-gray-600 mb-2">Referencia: {project.referencia}</p>
 
+            {/* Visualización de la imagen principal */}
             <img
               src={project.imagen_principal}
               alt={`Imagen principal de ${project.titulo}`}
               className="w-full h-48 object-cover rounded-md mb-2"
             />
 
+            {/* Visualización del collage */}
             {project.collage && project.collage.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-2">
                 {project.collage.map((imagen, index) => (
@@ -154,6 +219,7 @@ const Projects = () => {
               </div>
             )}
 
+            {/* Visualización de fechas */}
             <p className="text-gray-500 mt-2">Creado: {new Date(project.createdAt).toLocaleDateString()}</p>
             <p className="text-gray-500">Actualizado: {new Date(project.updatedAt).toLocaleDateString()}</p>
 
