@@ -12,8 +12,10 @@ function Portfolio() {
   }, []);
 
   const fetchProjects = async () => {
-    const response = await axios.get('http://localhost:3000/proyectos');
-    setProjects(response.data);
+    const response = await axios.get('http://localhost:1337/api/projects?populate=*');
+    setProjects(response.data.data);
+    console.log(response.data.data)
+    console.log(response.data.data[0].collage)
   };
 
   const handleShowCollage = (id) => {
@@ -56,38 +58,43 @@ function Portfolio() {
       <h1 className="text-5xl font-extrabold text-zinc-950 ">PORTFOLIO</h1>
       <div className="w-full">
         <ul className="space-y-16">
-          {projects.map(({ id, titulo, parrafo, imagen_principal, referencia, collage }) => {
+          {projects.map(({ id, title, paragraph, principalImage, reference, collage }) => {
             // Aquí se mapea el collage a un arreglo de objetos con propiedades
             const collageItems = collage.map((image, index) => {
-              const style = collageStyles[index] || collageStyles[0]; // Default style if index is out of bounds
-            
+              const style = collageStyles[index] || collageStyles[0]; 
+              
+              
+                 // Default style if index is out of bounds
+                
               return {
-                image,
-                title: `Título de la imagen ${index + 1}`,
+                image:image.url,
+                titulo: `Título de la imagen ${index + 1}`,
                 className: style.className,
                 style: {
                   animationDelay: style.animationDelay,
                 },
               };
             });
+            console.log("collageItems",collageItems)
 
             return (
               <li key={id} className="relative bg-white p-6 mt-10 rounded-sm shadow-lg">
                 <div className="lg:flex lg:flex-row flex flex-col items-center justify-center ">
                   <div className="absolute flex justify-between w-full text-project items-center">
-                    <h2 className="lg:ml-20 font-bold lg:text-2xl text-sm">{titulo}</h2>
-                    <h2 className="lg:mr-20 font-bold lg:text-2xl text-sm">{referencia}</h2>
+                    <h2 className="lg:ml-20 font-bold lg:text-2xl text-sm">{title}</h2>
+                    <h2 className="lg:mr-20 font-bold lg:text-2xl text-sm">{reference
+                    }</h2>
                   </div>
                   <div className="md:w-1/3 mb-10 w-full">
                     <img
-                      src={imagen_principal}
-                      alt={`Featured image for ${titulo}`}
+                      src={`http://localhost:1337${principalImage.url}`}
+                      alt={`Featured image for ${title}`}
                       className="w-full object-cover rounded-sm"
                     />
                   </div>
                   <div className="lg:w-[640px] w-[300px] lg:h-[540px] items-center -mt-14 h-full flex flex-col justify-center lg:p-10 p-3 lg:-ml-10 text-pretty bg-zinc-950 rounded-sm">
-                    <h2 className="lg:text-7xl text-3xl font-bold text-zinc-50">{titulo}</h2>
-                    <p className="text-zinc-50 mt-10 text-xs text-center">{parrafo}</p>
+                    <h2 className="lg:text-7xl text-3xl font-bold text-zinc-50">{title}</h2>
+                    <p className="text-zinc-50 mt-10 text-xs text-center">{paragraph}</p>
                   </div>
                 </div>
 
@@ -114,7 +121,7 @@ function Portfolio() {
                     {collageItems.map((item, index) => (
                       <img
                         key={index}
-                        src={item.image}
+                        src={`http://localhost:1337${item.image}`}
                         alt={item.title}
                         className={`absolute object-cover collage-image ${item.className}`}
                         style={item.style}

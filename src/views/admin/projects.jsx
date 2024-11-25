@@ -6,7 +6,8 @@ const Projects = () => {
   const [editProject, setEditProject] = useState(null);
   const [newMainImage, setNewMainImage] = useState(null);
   const [newCollageImages, setNewCollageImages] = useState([]);
-  const [collageToRemove, setCollageToRemove] = useState([]);
+  const [collageToRemove, setCollageToRemove] = useState([])
+  const [previewImages, setPreviewImages] = useState([]);
 
   useEffect(() => {
     fetchProjects();
@@ -86,6 +87,7 @@ const Projects = () => {
   const handleCollageImageChange = (e) => {
     const files = Array.from(e.target.files);
     setNewCollageImages((prevImages) => [...prevImages, ...files]);
+    setPreviewImages(files.map(file => URL.createObjectURL(file)));
   };
 
   const handleRemoveMainImage = () => {
@@ -183,6 +185,16 @@ const Projects = () => {
             onChange={handleCollageImageChange}
             className="mt-2"
           />
+           <div className="flex flex-wrap gap-2 mt-4">
+        {previewImages.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Vista previa ${index + 1}`}
+            className="w-20 h-20 object-cover rounded-md"
+          />
+        ))}
+      </div>
 
           <button
             type="submit"

@@ -16,6 +16,8 @@ const AddBlog = () => {
     if (name === 'imagenes') {
       const imagesArray = Array.from(files);
       setFormData({ ...formData, imagenes: imagesArray });
+      console.log(imagesArray);
+      
       setPreviewImages(imagesArray.map(file => URL.createObjectURL(file))); // Crear URLs para las imágenes
     } else {
       setFormData({ ...formData, [name]: value });

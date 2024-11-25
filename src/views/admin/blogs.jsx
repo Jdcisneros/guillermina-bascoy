@@ -6,6 +6,7 @@ const Blogs = () => {
   const [editBlog, setEditBlog] = useState(null);
   const [newImages, setNewImages] = useState([]); // Para las nuevas imágenes a agregar
   const [imagesToRemove, setImagesToRemove] = useState([]); // Para las imágenes a eliminar
+  const [previewImages, setPreviewImages] = useState([]);
 
   useEffect(() => {
     fetchBlogs();
@@ -67,6 +68,7 @@ const Blogs = () => {
   const handleChangeImages = (e) => {
     const files = Array.from(e.target.files);
     setNewImages(files); // Guardar archivos nuevos
+    setPreviewImages(files.map(file => URL.createObjectURL(file)));
   };
 
   const handleRemoveImage = (index) => {
@@ -115,6 +117,17 @@ const Blogs = () => {
             accept="image/*"
             multiple
           />
+
+<div className="flex flex-wrap gap-2 mt-4">
+        {previewImages.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Vista previa ${index + 1}`}
+            className="w-20 h-20 object-cover rounded-md"
+          />
+        ))}
+      </div>
           
           <div className="flex flex-wrap gap-2 mt-2">
             {editBlog.imagenes && editBlog.imagenes.map((imagen, index) => (

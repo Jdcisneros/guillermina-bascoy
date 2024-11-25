@@ -6,9 +6,10 @@ const AddProject = () => {
     titulo: '',
     parrafo: '',
     referencia: '',
-    imagen_principal: null, // Para la imagen principal
-    collage: [], // Para las imágenes del collage
+    imagen_principal: null,
+    collage: [],
   });
+  const [collagePreviews, setCollagePreviews] = useState([]); // Estado para las vistas previas
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,9 +19,14 @@ const AddProject = () => {
   const handleFileChange = (e) => {
     const { name } = e.target;
     if (name === 'collage') {
-      setFormData({ ...formData, collage: Array.from(e.target.files) });
+      const files = Array.from(e.target.files);
+      setFormData({ ...formData, collage: files });
+      
+      // Crear URLs para las vistas previas
+      setCollagePreviews(files.map(file => URL.createObjectURL(file)));
     } else if (name === 'imagen_principal') {
-      setFormData({ ...formData, imagen_principal: e.target.files[0] });
+      const file = e.target.files[0];
+      setFormData({ ...formData, imagen_principal: file });
     }
   };
 
@@ -31,7 +37,7 @@ const AddProject = () => {
     data.append('titulo', formData.titulo);
     data.append('parrafo', formData.parrafo);
     data.append('referencia', formData.referencia);
-    data.append('imagen_principal', formData.imagen_principal); // Imagen principal
+    data.append('imagen_principal', formData.imagen_principal);
 
     // Agregar cada imagen del collage al FormData
     formData.collage.forEach((file) => {
@@ -55,10 +61,14 @@ const AddProject = () => {
         imagen_principal: null,
         collage: [],
       });
+      setCollagePreviews([]); // Limpiar vistas previas
     } catch (error) {
       console.error('Error al crear el proyecto:', error);
     }
   };
+
+  console.log("collage",collagePreviews);
+  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-white shadow-md rounded-md">
@@ -108,6 +118,18 @@ const AddProject = () => {
         required
         className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
+
+      {/* Vista previa de las imágenes del collage */}
+      <div className="flex flex-wrap gap-2 mt-4">
+        {collagePreviews.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Vista previa ${index + 1}`}
+            className="w-20 h-20 object-cover rounded-md"
+          />
+        ))}
+      </div>
       
       <button
         type="submit"
