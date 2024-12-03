@@ -62,14 +62,14 @@ function Carrusel() {
                 <img
                   src={image.image}
                   alt={`image${index + 1}`}
-                  className={`object-cover h-[400px] lg:w-1/8 w-1/2  relative left-32 lg:left-80 rounded-sm z-30 ${
+                  className={`object-contain h-[400px] lg:w-1/8 w-1/2 md:w-1/4 relative left-32 lg:left-80 rounded-sm z-30  ${
                     currentSlide === index ? "" : ""
                   }`}
                 />
                 <img
                   src={image.image2}
                   alt={`image${index + 1}`}
-                  className={`object-cover h-[500px] w-1/3 lg:w-1/4 relative left-7 lg:left-60 rounded-sm ${
+                  className={`object-cover h-[500px] w-1/3 lg:w-1/4 relative left-7 lg:left-60 rounded-sm  ${
                     currentSlide === index ? "animate-slide-in-right" : ""
                   }`}
                 />

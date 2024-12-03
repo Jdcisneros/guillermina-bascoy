@@ -14,8 +14,7 @@ function Portfolio() {
   const fetchProjects = async () => {
     const response = await axios.get('http://localhost:1337/api/projects?populate=*');
     setProjects(response.data.data);
-    console.log(response.data.data)
-    console.log(response.data.data[0].collage)
+  
   };
 
   const handleShowCollage = (id) => {
@@ -24,31 +23,31 @@ function Portfolio() {
 
   const collageStyles = [
     {
-      className: "top-[5%] left-[8%] w-[25%] lg:top-[5%] lg:left-[8%] lg:w-[20%] z-20",
+      className: "top-[5%] left-[8%] w-[25%] lg:top-[5%] lg:left-[6%] lg:w-[20%] z-20",
       animationDelay: "1s",
     },
     {
-      className: "top-[0%] left-[30%] w-[30%] lg:top-[0%] lg:left-[30%] lg:w-[25%] z-10",
+      className: "top-[0%] left-[30%] w-[30%] lg:top-[0%] lg:left-[25%] lg:w-[25%] z-10",
       animationDelay: "3s",
     },
     {
-      className: "top-[15%] left-[60%] w-[25%] lg:top-[5%] lg:left-[60%] lg:w-[15%] z-30",
+      className: "top-[15%] left-[60%] w-[25%] lg:top-[2%] lg:left-[50%] lg:w-[17%] z-30",
       animationDelay: "2.5s",
     },
     {
-      className: "top-[40%] left-[30%] w-[20%] lg:top-[38%] lg:left-[20%] lg:w-[20%] z-40",
+      className: "top-[40%] left-[30%] w-[20%] lg:top-[38%] lg:left-[15%] lg:w-[20%] z-40",
       animationDelay: "1.5s",
     },
     {
-      className: "top-[30%] left-[45%] w-[25%] lg:top-[30%] lg:left-[45%] lg:w-[25%] z-40",
+      className: "top-[30%] left-[45%] w-[25%] lg:top-[40%] lg:left-[65%] lg:w-[25%] z-40",
       animationDelay: "2s",
     },
     {
-      className: "top-[2%] left-[75%] w-[30%] lg:top-[0%] lg:left-[65%] lg:w-[25%] z-20",
+      className: "top-[2%] left-[75%] w-[30%] lg:top-[0%] lg:left-[70%] lg:w-[25%] z-20",
       animationDelay: "3.5s",
     },
     {
-      className: "top-[30%] left-[10%] w-[20%] lg:top-[40%] lg:left-[10%] lg:w-[20%] z-20",
+      className: "top-[30%] left-[10%] w-[20%] lg:top-[40%] lg:left-[35%] lg:w-[30%] z-20",
       animationDelay: "4s",
     },
   ];
@@ -59,13 +58,8 @@ function Portfolio() {
       <div className="w-full">
         <ul className="space-y-16">
           {projects.map(({ id, title, paragraph, principalImage, reference, collage }) => {
-            // Aquí se mapea el collage a un arreglo de objetos con propiedades
             const collageItems = collage.map((image, index) => {
-              const style = collageStyles[index] || collageStyles[0]; 
-              
-              
-                 // Default style if index is out of bounds
-                
+              const style = collageStyles[index] || collageStyles[0];    
               return {
                 image:image.url,
                 titulo: `Título de la imagen ${index + 1}`,
@@ -75,7 +69,7 @@ function Portfolio() {
                 },
               };
             });
-            console.log("collageItems",collageItems)
+           
 
             return (
               <li key={id} className="relative bg-white p-6 mt-10 rounded-sm shadow-lg">

@@ -13,8 +13,11 @@ const Blogs = () => {
   }, []);
 
   const fetchBlogs = async () => {
-    const response = await axios.get('http://localhost:3000/blogs');
-    setBlogs(response.data);
+    const response = await axios.get('http://localhost:1337/api/blogs?populate=*');
+    setBlogs(response.data.data);
+    console.log("data blog", response.data.data)
+    console.log("data blog", response.data.data[0].image)
+    
   };
 
   const handleExpand = (id) => {
@@ -27,9 +30,9 @@ const Blogs = () => {
       <div className="space-y-4">
         {blogs.map((post) => (
           <div key={post.id} className="mt-10 border p-4 rounded-lg shadow-md bg-white w-[390px] lg:w-[1200px] md:w-[800px]">
-            <h2 className="text-2xl font-semibold mb-2">{post.titulo}</h2>
+            <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
             <p className="text-sm text-gray-500 mb-2">{post.createdAt.split('T')[0]}</p>
-            <p className="mb-4">{post.resumen}</p>
+            <p className="mb-4">{post.resume}</p>
             <button
               onClick={() => handleExpand(post.id)}
               className="px-1 -ml-1 text-1xl items-center font-extrabold text-zinc-950 rounded-lg hover:text-zinc-50 hover:bg-zinc-950"
@@ -49,8 +52,8 @@ const Blogs = () => {
 
             {expandedPostId === post.id && (
               <div className="mt-4">
-                <p className="mb-4">{post.parrafo}</p>
-                {post.imagenes && post.imagenes.length > 0 && (
+                <p className="mb-4">{post.paragraph}</p>
+                {post.image && post.image.length > 0 && (
                   <div className="mt-4">
                     <Carousel
                       showArrows={false}
@@ -59,11 +62,11 @@ const Blogs = () => {
                       autoPlay
                       interval={15000}
                       emulateTouch
-                      className="w-full"
+                      className="w-80"
                     >
-                      {post.imagenes.map((image, index) => (
-                        <div key={index} className="relative w-full h-76 md:h-96 lg:h-full">
-                          <img src={image} alt={`Imagen ${index + 1}`} className="object-cover w-full h-full" />
+                      {post.image.map((image, index) => (
+                        <div key={index} className="relative w-full h-76 md:h-96 lg:h-1/2 lg:w-80">
+                          <img src={`http://localhost:1337${image.url}`} alt={`Imagen ${index + 1}`} className="object-cover w-full h-full" />
                         </div>
                       ))}
                     </Carousel>
